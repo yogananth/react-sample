@@ -1,0 +1,36 @@
+'use strict';
+
+var ReactStylePlugin = require('react-style-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+    entry: {
+        app: ["./demo/app.js"]
+    },
+    output: {
+        path: "./demo",
+        publicPath: "/build/",
+        filename: "bundle.js"
+    },
+
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: [
+                    'babel',
+                    ReactStylePlugin.loader()
+                 ]
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader')
+            }
+        ]
+    },
+
+    plugins: [
+        new ReactStylePlugin('bundle.css')
+    ]
+};
