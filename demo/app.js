@@ -2,6 +2,7 @@ var React = require('react');
 var InputText = require('../src/components/Input/InputText.jsx');
 var InputPassword = require('../src/components/Input/InputPassword.jsx');
 
+var Input = require('../src/components/Input/index.jsx');
 
 var genericValidationRules = {
         email : [
@@ -39,6 +40,42 @@ var DemoApp = React.createClass({
                 <h1>Registration</h1>
 
                 {/* Email Address */}
+                <Input
+                    type='text'
+                    groupId='group-email-field'
+                    groupClass='con1 con2'
+                    labelText='Email Address (using Input)?'
+                    value='yoga@gmail.com'
+                    placeholder='name@domain.tld'
+                    className='c1 c2'
+                    id='input-email-0'
+                    refElement='refEmailInput'
+                    validations={genericValidationRules.email}
+                ></Input>
+
+                {/* Password */}
+                <Input
+                    type='password'
+                    groupId='group-pwd-field'
+                    groupClass='p1 p2'
+                    labelText='Password (using Input)?'
+                    placeholder='Password Placeholder'
+                    id='pwd-test-0'
+                    enableUnmask={true}
+                    unmaskTime={2000}
+                    showMeter={true}
+                    minScore={1}
+                    validations={[
+                        {
+                            rule: 'minLength',
+                            expected: 6,
+                            errorText: 'For your security, we expect a minimum of 6 character password'
+                        }]
+                    }
+                ></Input>
+
+
+                {/* Email Address */}
                 <InputText 
                     groupId='group-email-field'
                     groupClass='con1 con2'
@@ -48,6 +85,7 @@ var DemoApp = React.createClass({
                     className='c1 c2'
                     id='input-email'
                     type='email'
+                    refElement='refEmailInput'
                     validations={genericValidationRules.email}
                 ></InputText>
 
@@ -85,8 +123,12 @@ var DemoApp = React.createClass({
                     }
                 ></InputPassword>
 
+                <h2>{console.log(this.refs)}</h2>
             </div>
+
         );
+
+    
     }
 });
 

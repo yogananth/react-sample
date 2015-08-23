@@ -72,6 +72,7 @@ var InputText = React.createClass({
 
     onFocus: function(){
         this.setState({showError: this.state.error});
+        console.log (this.refs);
     },
 
     render: function render() {
@@ -79,7 +80,6 @@ var InputText = React.createClass({
                              this.props.groupClass,
                              { 'has-error': this.state.error }
                             );
-
         return (
             <div className={groupClass} id={this.props.groupId || 'c-' + this.props.id}>
                 <label
@@ -89,6 +89,7 @@ var InputText = React.createClass({
 
                 <input
                     {...this.props}
+                    ref={this.props.refElement}
                     type={this.props.type}
                     id={this.props.id}
                     placeholder={this.props.placeholder}

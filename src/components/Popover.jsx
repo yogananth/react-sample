@@ -1,8 +1,5 @@
 'use strict';
 
-// import React from 'react';
-// import classNames from 'classnames';
-
 var React = require('react');
 var classNames = require('classnames');
 require('./Popover.less');
